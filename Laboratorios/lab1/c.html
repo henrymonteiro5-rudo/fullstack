@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henry Monteiro | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #142033;
+      --muted: #65758b;
+      --line: #dfe7f1;
+      --blue: #1d4ed8;
+      --blue-dark: #173c9e;
+      --green: #13a58b;
+      --yellow: #f2a93b;
+      --shadow: 0 18px 50px rgba(20, 32, 51, .12);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(19, 165, 139, .16), transparent 28rem),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 55%, #eef4f9 100%);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, .88);
+      border-bottom: 1px solid rgba(223, 231, 241, .95);
+      backdrop-filter: blur(16px);
+    }
+    .nav, .hero, .section, .footer-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .brand-icon, .icon-box {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      border-radius: var(--radius);
+    }
+    .links { display: flex; gap: 6px; }
+    .links a {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: .94rem;
+      font-weight: 700;
+      border-radius: var(--radius);
+    }
+    .links a:hover { color: var(--blue); background: #edf4ff; }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr);
+      align-items: center;
+      gap: 44px;
+      padding: 56px 0 44px;
+    }
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 8px 10px;
+      color: var(--blue-dark);
+      background: #eaf2ff;
+      border: 1px solid #d6e6ff;
+      border-radius: var(--radius);
+      font-size: .88rem;
+      font-weight: 800;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 720px;
+      margin-bottom: 18px;
+      font-size: clamp(2.45rem, 6vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+    .hero-text p {
+      max-width: 620px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-weight: 800;
+      transition: transform .16s ease, background .16s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .primary { color: #fff; background: var(--blue); box-shadow: 0 14px 26px rgba(29, 78, 216, .22); }
+    .primary:hover { background: var(--blue-dark); }
+    .secondary { background: #fff; border-color: var(--line); }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 530px;
+      margin: 0;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: #dce7f1;
+    }
+    .hero-photo img { width: 100%; height: 100%; min-height: 530px; object-fit: cover; }
+    .stats {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 14px;
+      color: #fff;
+      background: rgba(20, 32, 51, .78);
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: var(--radius);
+      backdrop-filter: blur(14px);
+    }
+    .stats strong { display: block; font-size: 1.25rem; line-height: 1.1; }
+    .stats span { display: block; color: rgba(255, 255, 255, .72); font-size: .78rem; line-height: 1.3; }
+
+    .section { padding: 72px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .section-head h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.4rem); line-height: 1.12; }
+    .section-head p { max-width: 480px; margin-bottom: 0; color: var(--muted); }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: 22px;
+    }
+    .panel, .card, .project, .contact-card {
+      background: rgba(255, 255, 255, .86);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 34px rgba(20, 32, 51, .07);
+    }
+    .panel { overflow: hidden; }
+    .panel img { width: 100%; height: 310px; object-fit: cover; }
+    .panel-body, .text-panel, .project-body, .contact-card { padding: 22px; }
+    .panel-body h3, .card h3, .project h3 { margin-bottom: 8px; }
+    .panel-body p, .text-panel p, .card p, .project p, .contact-card p { color: var(--muted); }
+    .timeline { display: grid; gap: 12px; margin-top: 22px; }
+    .timeline-item { display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: start; }
+    .timeline-item .icon-box { color: var(--blue); background: #edf4ff; }
+    .timeline-item strong { display: block; }
+    .timeline-item span { color: var(--muted); font-size: .94rem; }
+
+    .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .card { min-height: 190px; padding: 20px; transition: transform .16s ease, box-shadow .16s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card:nth-child(2) .icon-box { background: var(--green); }
+    .card:nth-child(3) .icon-box { background: var(--blue); }
+    .card:nth-child(4) .icon-box { background: var(--yellow); }
+    .card .icon-box { margin-bottom: 18px; background: var(--text); }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr .85fr;
+      grid-auto-rows: 210px;
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 34px rgba(20, 32, 51, .10);
+      background: #dce7f1;
+    }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .24s ease; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 12px;
+      color: #fff;
+      background: rgba(20, 32, 51, .72);
+      border-radius: var(--radius);
+      backdrop-filter: blur(10px);
+    }
+    .caption strong { display: block; line-height: 1.2; }
+    .caption span { color: rgba(255, 255, 255, .76); font-size: .84rem; }
+
+    .projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .project { overflow: hidden; }
+    .project::before { content: ""; display: block; height: 7px; background: linear-gradient(90deg, var(--blue), var(--green)); }
+    .project:nth-child(2)::before { background: linear-gradient(90deg, var(--green), var(--yellow)); }
+    .project:nth-child(3)::before { background: linear-gradient(90deg, var(--yellow), var(--blue)); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags span { padding: 6px 9px; color: #38506f; background: #eef4fa; border-radius: var(--radius); font-size: .78rem; font-weight: 800; }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+    .contact-list { display: grid; gap: 12px; margin-top: 20px; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 54px;
+      padding: 12px 14px;
+      background: #f7fafd;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-weight: 800;
+    }
+    .contact-link span { display: inline-flex; align-items: center; gap: 10px; }
+    .map {
+      overflow: hidden;
+      min-height: 360px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 34px rgba(20, 32, 51, .07);
+      background: #dce7f1;
+    }
+    iframe { width: 100%; height: 100%; min-height: 360px; border: 0; }
+
+    .footer { border-top: 1px solid var(--line); background: #fff; }
+    .footer-inner {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .socials { display: flex; gap: 8px; }
+    .small-button {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      background: #f3f7fb;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    @media (max-width: 900px) {
+      .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: 14px 0; }
+      .links { width: 100%; overflow-x: auto; }
+      .hero, .about, .contact { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 46px; }
+      .hero-photo, .hero-photo img { min-height: 420px; }
+      .cards, .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .section { padding: 50px 0; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .actions, .button { width: 100%; }
+      .hero-photo, .hero-photo img { min-height: 360px; }
+      .stats, .cards, .projects, .gallery { grid-template-columns: 1fr; }
+      .gallery { grid-auto-rows: 245px; }
+      .gallery-item:first-child { grid-row: span 1; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav" aria-label="Menu principal">
+      <a class="brand" href="#inicio">
+        <span class="brand-icon"><i data-lucide="code-2"></i></span>
+        <span>Henry Monteiro</span>
+      </a>
+      <div class="links">
+        <a href="#sobre">Sobre</a>
+        <a href="#interesses">Interesses</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="tagline"><i data-lucide="sparkles"></i> Ciência da Computação | FEI</p>
+        <h1>Construindo meu caminho na tecnologia.</h1>
+        <p>Sou Henry Monteiro, estudante de Ciência da Computação. Gosto de aprender criando projetos, explorar novas ideias e transformar interesses pessoais em experiências digitais bem feitas.</p>
+        <div class="actions">
+          <a class="button primary" href="#projetos"><i data-lucide="folder-kanban"></i>Ver projetos</a>
+          <a class="button secondary" href="#contato"><i data-lucide="send"></i>Entrar em contato</a>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=80" alt="Mesa de estudos com notebook aberto" />
+        <figcaption class="stats">
+          <div><strong>1º</strong><span>Semestre</span></div>
+          <div><strong>FEI</strong><span>Computação</span></div>
+          <div><strong>Web</strong><span>Aprendizado atual</span></div>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="section-head">
+        <h2>Sobre Mim</h2>
+        <p>Uma apresentação curta, direta e com aparência de portfólio.</p>
+      </div>
+      <div class="about">
+        <article class="panel">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" alt="Estudantes trabalhando juntos" />
+          <div class="panel-body">
+            <h3>Estudante em evolução</h3>
+            <p>Foco em fundamentos, programação, projetos web e boas práticas desde o começo da graduação.</p>
+          </div>
+        </article>
+        <article class="text-panel panel">
+          <p>Tenho interesse em tecnologia, jogos, cultura pop, viagens e experiências criativas. Nesta página, a ideia é reunir um pouco da minha personalidade com uma apresentação mais organizada e visualmente profissional.</p>
+          <p>O conteúdo pode mudar conforme eu avançar nos estudos: novos projetos, certificados, trabalhos da faculdade e links importantes podem entrar aqui.</p>
+          <div class="timeline">
+            <div class="timeline-item"><span class="icon-box"><i data-lucide="graduation-cap"></i></span><div><strong>Graduação</strong><span>Ciência da Computação na FEI.</span></div></div>
+            <div class="timeline-item"><span class="icon-box"><i data-lucide="monitor-smartphone"></i></span><div><strong>Área de interesse</strong><span>Desenvolvimento web, lógica de programação e interfaces digitais.</span></div></div>
+            <div class="timeline-item"><span class="icon-box"><i data-lucide="target"></i></span><div><strong>Objetivo</strong><span>Criar projetos cada vez mais completos e úteis.</span></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="interesses">
+      <div class="section-head">
+        <h2>Interesses</h2>
+        <p>Em vez de uma lista simples, os assuntos viram cards mais fáceis de escanear.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><span class="icon-box"><i data-lucide="plane"></i></span><h3>Viagens</h3><p>Conhecer lugares, culturas e experiências novas.</p></article>
+        <article class="card"><span class="icon-box"><i data-lucide="gamepad-2"></i></span><h3>Jogos</h3><p>Games como entretenimento, desafio e inspiração para projetos.</p></article>
+        <article class="card"><span class="icon-box"><i data-lucide="cpu"></i></span><h3>Tecnologia</h3><p>Programação, web, hardware e novas ferramentas digitais.</p></article>
+        <article class="card"><span class="icon-box"><i data-lucide="trophy"></i></span><h3>Esportes</h3><p>Torcida, competição e momentos para acompanhar com amigos.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="section-head">
+        <h2>Galeria</h2>
+        <p>Imagens padronizadas dão mais unidade visual e deixam a página menos improvisada.</p>
+      </div>
+      <div class="gallery">
+        <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80" alt="Paisagem de viagem" /><figcaption class="caption"><strong>Viagens</strong><span>Lugares e experiências</span></figcaption></figure>
+        <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=900&q=80" alt="Controle de videogame" /><figcaption class="caption"><strong>Jogos</strong><span>Desafio e diversão</span></figcaption></figure>
+        <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Circuito eletrônico" /><figcaption class="caption"><strong>Tecnologia</strong><span>Curiosidade e criação</span></figcaption></figure>
+        <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=900&q=80" alt="Estádio de futebol" /><figcaption class="caption"><strong>Futebol</strong><span>Energia de torcida</span></figcaption></figure>
+        <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=80" alt="Sobremesa servida em uma tigela" /><figcaption class="caption"><strong>Gastronomia</strong><span>Pequenos favoritos</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="section-head">
+        <h2>Projetos</h2>
+        <p>Esta área pode crescer conforme você criar trabalhos da faculdade ou estudos próprios.</p>
+      </div>
+      <div class="projects">
+        <article class="project"><div class="project-body"><h3>Primeiro Portfólio</h3><p>Uma página pessoal com estrutura semântica, responsividade e organização visual.</p><div class="tags"><span>HTML</span><span>CSS</span><span>Responsivo</span></div></div></article>
+        <article class="project"><div class="project-body"><h3>Estudos de Programação</h3><p>Exercícios, desafios e pequenos sistemas para treinar lógica e organização de código.</p><div class="tags"><span>Lógica</span><span>Algoritmos</span><span>Prática</span></div></div></article>
+        <article class="project"><div class="project-body"><h3>Interface Web</h3><p>Experimentos com layout, cores, tipografia e componentes para páginas modernas.</p><div class="tags"><span>UI</span><span>Design</span><span>Web</span></div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="section-head">
+        <h2>Contato e Links</h2>
+        <p>Links importantes ganham formato de botões, e o mapa entra como complemento visual.</p>
+      </div>
+      <div class="contact">
+        <article class="contact-card">
+          <h3>Vamos conversar</h3>
+          <p>Troque os endereços abaixo pelos seus links reais.</p>
+          <div class="contact-list">
+            <a class="contact-link" href="https://moodle.fei.edu.br/" target="_blank" rel="noreferrer"><span><i data-lucide="book-open"></i>Moodle FEI</span><i data-lucide="arrow-up-right"></i></a>
+            <a class="contact-link" href="https://www.instagram.com/" target="_blank" rel="noreferrer"><span><i data-lucide="instagram"></i>Instagram</span><i data-lucide="arrow-up-right"></i></a>
+            <a class="contact-link" href="https://www.palmeiras.com.br/" target="_blank" rel="noreferrer"><span><i data-lucide="external-link"></i>Palmeiras</span><i data-lucide="arrow-up-right"></i></a>
+          </div>
+        </article>
+        <div class="map">
+          <iframe title="Mapa da FEI São Bernardo do Campo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=FEI%20Campus%20Sao%20Bernardo%20do%20Campo&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>Henry Monteiro | Portfólio pessoal</span>
+      <div class="socials">
+        <a class="small-button" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a class="small-button" href="#inicio" aria-label="Voltar ao topo"><i data-lucide="arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  
+</body>
+</html>
