@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "color": "^5.0.3",
+    "colors": "^1.4.0",
+    "express": "^5.3.0"
+  },
+  "name": "servidor",
+  "version": "0.0.1",
+  "description": "primeiro servidor",
+  "main": "servidor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrymonteiro5-rudo/fullstack.git"
+  },
+  "author": "Henry Monteiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henrymonteiro5-rudo/fullstack/issues"
+  },
+  "homepage": "https://github.com/henrymonteiro5-rudo/fullstack#readme"
+}
